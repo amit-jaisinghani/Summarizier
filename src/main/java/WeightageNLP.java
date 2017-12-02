@@ -1,8 +1,6 @@
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class WeightageNLP {
     private static HashMap<String, Integer> weightage;
