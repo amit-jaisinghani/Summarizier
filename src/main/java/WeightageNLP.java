@@ -1,5 +1,6 @@
-import javafx.util.Pair;
 
+
+import javafx.util.Pair;
 import java.util.*;
 
 public class WeightageNLP {
@@ -10,15 +11,15 @@ public class WeightageNLP {
         for (NLPSpeechTags a:
              NLPSpeechTags.values()) {
             if (a.toString().startsWith("VBZ"))
-                weightage.put(a.toString(), 4);
+                weightage.put(a.toString(), 10);
             else if ((a.toString().startsWith("V")) || (a.toString().startsWith("P")))
-                weightage.put(a.toString(), 1);
+                weightage.put(a.toString(), 16);
             else if (a.toString().startsWith("N"))
-                weightage.put(a.toString(), 2);
+                weightage.put(a.toString(), 16);
             else if (a.toString().startsWith("J"))
-                weightage.put(a.toString(), 3);
+                weightage.put(a.toString(), 14);
             else
-                weightage.put(a.toString(), 4);
+                weightage.put(a.toString(), 10);
         }
     }
 
