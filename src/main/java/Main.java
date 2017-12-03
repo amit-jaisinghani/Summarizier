@@ -6,6 +6,8 @@
  */
 
 import javafx.util.*;
+import org.apache.lucene.search.Weight;
+
 import java.util.*;
 
 /**
@@ -16,11 +18,15 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
+        if (args.length == 0)
+            return;
 
-        String inputParagraph = "A topic sentence usually comes at the beginning of a paragraph; that is, it is usually the first sentence in a formal academic paragraph.  (Sometimes this is not true, but as you practice writing with this online lesson site, please keep to this rule unless you are instructed otherwise.)  Not only is a topic sentence the first sentence of a paragraph, but, more importantly, it is the most general sentence in a paragraph.  What does \"most general\" mean?  It means that there are not many details in the sentence, but that the sentence introduces an overall idea that you want to discuss later in the paragraph. ";
+        String inputParagraph = args[0];
+        System.out.println("Input : " + inputParagraph);
+            /*"After I pulled the trigger and recovered from the recoil, I slowly refocused my eyes on the target. There it was—a tiny but distinct circle next to the zombie's eye, the first bullet hole I'd ever made. I looked down at the shaking Glock 19 in my hands. A swift and strong emotional transformation swept over me. In seconds, I went from feeling nervous, even terrified, to exhilarated and unassailable—and right then I understood why millions of Americans believe guns keep them safe.\n" +
+            "I was standing in a shooting range 15 miles south of Kennesaw, Ga., a place known as “America's Gun City” because of a law requiring residents to own firearms. It was day two of a four-day road trip I'd embarked on to investigate a controversial and popular claim made by the gun lobby: that more guns protect more people from crime.\n" +
+            "Guns took more than 36,000 U.S. lives in 2015, and this and other alarming statistics have led many to ask whether our nation would be better off with firearms in fewer hands. Yet gun advocates argue exactly the opposite: that murders, crimes and mass shootings happen because there aren't enough guns in enough places. Arming more people will make our country safer and more peaceful, they say, because criminals won't cause trouble if they know they are surrounded by gun-toting good guys.";*/
         POSTagger posTagger = POSTagger.getInstance();
-        List<Pair<String, String>> temp = posTagger.getTaggedWords(inputParagraph);
-        System.out.println(temp);
-        System.out.println(WeightageNLP.GetWeightage(temp));
+        System.out.println("Output : " + WeightageNLP.GetSummarizedParagraph(WeightageNLP.GetWeightage(posTagger.getTaggedWords(inputParagraph))));
     }
 }
