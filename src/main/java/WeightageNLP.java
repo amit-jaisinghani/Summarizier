@@ -1,6 +1,8 @@
 
 
 import javafx.util.Pair;
+
+import javax.print.DocFlavor;
 import java.util.*;
 
 public class WeightageNLP {
@@ -32,6 +34,17 @@ public class WeightageNLP {
                 wordsWeightage.add(new Pair<String, Integer>(a.getKey(), weightage.get(wordType)));
         }
         return wordsWeightage;
+    }
+
+    public static String GetSummarizedParagraph(List<Pair<String, Integer>> words) {
+        StringBuilder str = new StringBuilder();
+
+        for (Pair<String, Integer> pair:
+             words) {
+            if (pair.getValue() >= 14)
+                str.append(pair.getKey() + "-");
+        }
+        return str.toString().trim();
     }
 }
 
